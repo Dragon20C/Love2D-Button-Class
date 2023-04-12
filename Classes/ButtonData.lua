@@ -11,8 +11,6 @@ function ButtonData:create(Position,Text,Font_Table,Textures,Action)
         x = Position.x, -- Storing the position of the button
         y = Position.y,
         text = Text, -- Text to show
-        font = Font_Table.font, -- A table with the font and size
-        font_size = Font_Table.size,
         textures = Textures, -- A table with the textures
         action = Action, -- Runs the function
         state = "default" -- "default" _ "hover" _ "pressed"
@@ -21,6 +19,7 @@ function ButtonData:create(Position,Text,Font_Table,Textures,Action)
     -- Get the width and height of the button to do box detection
     button.width = button.textures[button.state]:getWidth()
     button.height = button.textures[button.state]:getHeight()
+    button.font = love.graphics.newFont(Font_Table.font, Font_Table.size)
 
     setmetatable(button, ButtonData)
     return button
